@@ -43,7 +43,7 @@ bot.on('message', message =>{
             return message.reoply("Je n'ai pas la permission KICK_MEMBERSpour faire ceci.").catch(console.error);
         }
         kickMember.kick().then(message => {
-            message.reply(`${member.user.username} a été explusé avec succès.`).catch(console.error);
+            return message.reply(`${member.user.username} a été explusé avec succès.`).catch(console.error);
         }).catch(console.error)
     }
 
