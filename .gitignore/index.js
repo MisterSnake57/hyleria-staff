@@ -27,7 +27,7 @@ bot.on('message', message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     command = args.shift().toLowerCase();
 
-    if(command === "kick") {
+    if(command === "KICK_MEMBER") {
         let modRole = message.guild.roles.find("name", "Kick");
         if(!message.member.roles.has(modRole.id)) {
             return message.reply("Tu n'as pas la permission de faire cette commande.").catch(console.error);
