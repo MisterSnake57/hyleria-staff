@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const token = process.env.token;
+let cooldown = new Set();
+let cdseconds = 5;
 
 var prefix = ("*")
 
@@ -27,7 +29,7 @@ bot.on('message', message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     command = args.shift().toLowerCase();
 
-    if(command === prefix + "kick") {
+    if(command === "kick") {
         let modRole = message.guild.roles.find("name", "Kick");
         if(!message.member.roles.has(modRole.id)) {
             return message.reply("Tu n'as pas la permission de faire cette commande.").catch(console.error);
@@ -47,4 +49,30 @@ bot.on('message', message =>{
         }).catch(console.error)
     }
 
+});
+
+bot.on("guildMemberAdd", member => {
+    member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member}, dans le serveur Hyleria Mᴜʟᴛɪ﹣Gᴀᴍɪɴɢ`);
+});
+
+bot.on("guildMemberRemove", member => {
+    member.guild.channels.find("name", "bienvenue-aurevoir").send(`${member} vien de nous quitter`);
+});
+
+bot.on("guildMemberAdd", member => {
+    member.guild.channels.find("name", "welcome-goodbye").send(`Welcome ${member}, in the server Hyleria Mᴜʟᴛɪ﹣Gᴀᴍɪɴɢ`);
+});
+
+bot.on("guildMemberRemove", member => {
+    member.guild.channels.find("name", "welcome-goodbye").send(`${member}, just leave us`);
+});
+
+bot.on("guildMemberAdd", member => {
+    var role = member.guild.roles.find('name', '.');
+    member.addRole(role);
+});
+
+bot.on("guildMemberAdd", member => {
+    var roles = member.guild.roles.find('name', '👤 → Member ');
+    member.addRole(roles);
 });
