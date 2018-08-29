@@ -48,8 +48,10 @@ bot.on('message', message =>{
 });
 
 bot.on('message', message =>{
-    console.log(message.author.id);
-    var tempmute = require("./tempmute.js");
+    if(command === prefix + "tempmute"){
+        console.log(message.author.id);
+        var tempmute = require("./tempmute.js")
+    }
 });
 
 bot.on("guildMemberAdd", member => {
