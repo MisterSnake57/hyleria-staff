@@ -49,8 +49,9 @@ bot.on('message', message =>{
 
 bot.on('message', message =>{
     if(command === "tempmute"){
-        console.log(message.author.id);
-        var tempmute = require("./tempmute.js")
+        var args = message.content.split(" ");
+        var tempmute = require("./tempmute.js");
+        tempmute(bot, message, args)
     }
 });
 
