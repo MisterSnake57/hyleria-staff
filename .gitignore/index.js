@@ -4,7 +4,7 @@ const token = process.env.token;
 let cooldown = new Set();
 let cdseconds = 5;
 
-var prefix = ("*")
+var prefix = ("!")
 
 bot.on('ready', function() {
     bot.user.setGame("Command: *help");
@@ -15,14 +15,10 @@ bot.login(token);
 
 bot.on('message', message => {
     if (message.content === prefix + "help"){
-        message.channel.sendMessage("Liste des commandes: \, -*help");
-    }
-
-    if (message.content === "Salut"){
-        message.reply("Bien le bonjour. :)");
-        console.log("Commande Salut effectué");
+        message.channel.sendMessage("Liste des commandes: \, -!help, kick, ban, mute");
     }
 }); 
+
 
 bot.on('message', message =>{
     let command = message.content.split(" ")[0];
@@ -42,7 +38,7 @@ bot.on('message', message =>{
             return message.reply("Cet utilisateur est introuvable ou impossible à expluser.")
         }
         if(!message.guild.member(bot.user).hasPermission("KICK_MEMBERS")) {
-            return message.reoply("Je n'ai pas la permission KICK_MEMBERSpour faire ceci.").catch(console.error);
+            return message.reoply("Je n'ai pas la permission KICK_MEMBERS pour faire ceci.").catch(console.error);
         }
         kickMember.kick().then(message => {
             return message.reply(`${member.user.username} a été explusé avec succès.`).catch(console.error);
@@ -73,6 +69,6 @@ bot.on("guildMemberAdd", member => {
 });
 
 bot.on("guildMemberAdd", member => {
-    var roles = member.guild.roles.find('name', '👤 → Member ');
+    var roles = member.guild.roles.find('name', '👤 → Member');
     member.addRole(roles);
-});
+});  
