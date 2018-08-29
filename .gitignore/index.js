@@ -47,6 +47,11 @@ bot.on('message', message =>{
 
 });
 
+bot.on('message', message =>{
+    console.log(message.author.id);
+    var tempmute = require("./Commandes/tempmute.js");
+});
+
 bot.on("guildMemberAdd", member => {
     member.guild.channels.find("name", "bienvenue-aurevoir").send(`Bienvenue ${member}, dans le serveur Hyleria Mᴜʟᴛɪ﹣Gᴀᴍɪɴɢ`);
 });
