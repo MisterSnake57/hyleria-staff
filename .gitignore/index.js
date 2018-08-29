@@ -49,7 +49,7 @@ bot.on('message', message =>{
 
 bot.on('message', message =>{
     console.log(message.author.id);
-    var tempmute = require("./Commandes/tempmute.js");
+    var tempmute = require("./tempmute.js");
 });
 
 bot.on("guildMemberAdd", member => {
