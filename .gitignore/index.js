@@ -48,7 +48,7 @@ bot.on('message', message =>{
 });
 
 bot.on('message', message =>{
-    if(command === prefix + "tempmute"){
+    if(command === "tempmute"){
         console.log(message.author.id);
         var tempmute = require("./tempmute.js")
     }
